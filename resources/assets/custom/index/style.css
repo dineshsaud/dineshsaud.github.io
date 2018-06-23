@@ -1,0 +1,26 @@
+.relevant-crafts .craft{
+	color: unset;
+}
+
+.seller-info span{
+	display: inline-block;
+	width: 100px;
+}
+
+.craft-description:first-letter{
+	text-transform: capitalize;
+}
+
+.c-price{
+	background: lightgreen;
+	color: #fff;
+	text-align: center;
+	display: block;
+	letter-spacing: 2px;
+	height: 40px;
+	line-height: 40px;
+}
+.pDetails p
+{
+margin-bottom: 0px; 	
+}
