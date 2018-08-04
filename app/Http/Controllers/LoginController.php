@@ -18,7 +18,7 @@ class LoginController extends Controller
 	   	if(count($customers) > 0)
 	   		foreach($customers as $customer):
 			   	if(\Hash::check($data->password, $customer->password)):
-			   		session(['auth' => $customer]);
+			   		session(['auth' => $customer, 'type'=>'customer']);
 				   	return redirect('/');
 			   endif;
 			endforeach;
@@ -36,7 +36,7 @@ class LoginController extends Controller
 	   	if(count($sellers) > 0)
 	   		foreach($sellers as $seller):
 			   	if(\Hash::check($data->password, $seller->password)):
-			   		session(['auth' => $seller]);
+			   		session(['auth' => $seller, 'type'=>'seller']);
 				   	return redirect('/');
 			   endif;
 			endforeach;

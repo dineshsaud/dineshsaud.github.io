@@ -1,21 +1,29 @@
 @extends('layouts.blueprint')
 @section('content')
-<div class="container">
+<style>
+	body{
+background: #EBF5FB  ;
+
+}
+</style>
+<div class="container p-1" style="background-color: #F9FAFA">
 	<style>
 	[name] {
 		box-shadow: inset 0px 0px 20px 0px lightblue;
 	}
+
 	</style>
-	<div class="mt-3"></div>
-	<div class="row px-3 pt-2 pb-3 m-auto w-100 rounded" style="background: #F0B27A;">
+	  <div class=""></div>
+	<div class="row px-3 pt-2 pb-3 m-auto w-100 rounded" style="background:#E5E7E9;">
 		<div class="col-sm-4">
 			<div class="card" style="background: transparent;border-color: transparent;">
 				<form action="post">
 					<div class="form-group">
-						<label for="cat" class="text-white">Seller Name</label>
-						<select name="catogery" id="cat" class="form-control">
+						<label for="cat" class="text-muted">Brand Seller Name</label>
+						<select name="seller" id="byseller" class="form-control">
+							<option value="">Choose</option>
 							@foreach($sellers as $seller)
-							<option value="{{$seller->id}}" >{{$seller->name}}</option>
+							<option value="{{$seller->id}}">{{$seller->name}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -26,10 +34,11 @@
 			<div class="card" style="background: transparent;border-color: transparent;">
 				<form action="post">
 					<div class="form-group">
-						<label for="catogery" class="text-white">Categories</label>
-						<select name="catogery" id="catogery" class="form-control">
+						<label for="category" class="text-muted">Categories</label>
+						<select name="category" id="bycategory" class="form-control">
+							<option value="">Choose</option>
 							@foreach(craft_categories() as $key => $value )
-							<option id="{{$key}}" value="Paper craft">{{$value}}</option>
+							<option  value="{{$value}}" >{{$value}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -38,25 +47,37 @@
 		</div>
 		<div class="col-sm-4">
 			<div class="card" style="background: transparent;border-color: transparent;">
-				<form action="post">
-					<label for="search-manual" class="text-white">Manual Search</label>
-					<div class="input-group">
-						<input id="search-manual" type="text" name="search-manual" class="form-control" placeholder="Search here">
+				<form action="{{ route('name.results') }}" method="post" id="search-form" class="w-100 mt-3">
+					@csrf
+					<div class="input-group w-75 mt-3">
+						<input type="text" class="form-control" name="craft_name" placeholder="Search Craft Here" aria-label="Recipient's username" aria-describedby="basic-addon2">
 						<div class="input-group-append">
-							<span class="input-group-text btn"><i class=" fa fa-search" ></i></span>
+							<button class="input-group-text" type="submit"  id="basic-addon2"> <i class="fa fa-search"></i></button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 ">
 			<div class="card" style="background: transparent;border-color: transparent;">
-				<label class="text-white">Search by price :</label>
-				<form action="post" class="form-inline">
-					<div class="form-group">
-						<input type="number" name="from" placeholder="from" class="form-control col-md-4">
-						&nbsp;&nbsp; -- &nbsp;
-						<input type="number" name="to" placeholder="upto" class="form-control col-md-4">
+				<label class="text-muted">Search by price :</label>
+				<form action="post">
+					<div class="row form-group px-3">
+						<select type="number" id="byPriceFrom" name="price_from" class="form-control col-md-5">
+							<option value="">From</option>
+							@for($i=0; $i<count(price()); $i++)
+							<option value="{{price()[$i]}}"> ${{price()[$i]}}</option>
+							@endfor
+							
+						</select>
+						&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp;&nbsp;&nbsp;
+						<select type="number" id="byPriceUpTo" name="price_upto"  class="form-control col-md-5">
+							<option value="">Up To</option>
+							@for($i=0; $i<count(price()); $i++)
+							<option value="{{price()[$i]}}"> ${{price()[$i]}}</option>
+							@endfor
+							
+						</select>
 					</div>
 				</form>
 			</div>
@@ -64,7 +85,7 @@
 	</div>
 	
 	<hr class="bg-danger w-100">
-</div>
+
 <section id="products">
 	<div class="container">
 		<div class="row">
@@ -84,7 +105,7 @@
 								<i class="fa fa-star" style="color: gold;"></i>
 								@endfor
 								</strong>
-								<small class="float-left pt-1"> &nbsp;(200 views)</small>
+								<small class="float-left pt-1"> &nbsp;{{$tcraft->views}}</small>
 								<strong class="float-right text-success">${{$tcraft->price}}</strong>
 							</p>
 						</div>
@@ -94,5 +115,24 @@
 			@endforeach
 		</div>
 	</div>
+	</div>
 </section>
+<script>
+$(document).off('change', 'select').on('change', 'select', function (event) {
+	event.preventDefault();
+	let param = {};
+	$(document).find('select').each(function () {
+		param[$(this).attr('name')] = $(this).val();
+	});
+	// debugger;
+	callAjax({
+		url: '/filter/crafts',
+		method: 'POST',
+		data : param
+	}, function (response) {
+		$('#products .container').html(response);
+		// debugger;
+	});
+});
+</script>
 @endsection

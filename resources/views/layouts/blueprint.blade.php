@@ -3,23 +3,23 @@
   <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
+    <link rel="icon" href="{!! asset('images/img_3.jpg') !!}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="Shortcut Icon" href="favicon.ico">
-    <title>Blog Template for Bootstrap</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{asset('css/mixed.css')}}">
     <link href="css/blog.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}">
   </head>
+
   <body>
     @include('layouts.navbar')
     <!--
     <div class="row"> -->
       @yield('content')
-      @include('layouts.sidebar')
       @include('layouts.footer')
-      
       <script src="{{asset('js/mixed.js')}}"></script>
       @yield("script")
     </body>

@@ -30,6 +30,7 @@ let mix = require('laravel-mix');
    mix.scripts([
    'resources/assets/js/jquery.min.js',
    'resources/assets/js/bootstrap.min.js',
+   'resources/assets/custom/ajax.js',
    'resources/assets/js/custom.js'
 
    	],'public/js/mixed.js');

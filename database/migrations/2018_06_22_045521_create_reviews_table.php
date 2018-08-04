@@ -16,12 +16,12 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('customer_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('craft_id')->unsigned();
             $table->text('comment')->nullable();
             $table->string('tittle');
             $table->integer('rating')->nullable();
-            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('craft_id')->references('id')->on('craft')->onUpdate('cascade')->onDelete('cascade');
         });
     }

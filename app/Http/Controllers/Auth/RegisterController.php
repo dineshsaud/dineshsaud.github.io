@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -28,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,6 +51,11 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'phone_no' => 'required|numeric|unique:users',
+            'gender' => 'required|string',
+            'user_type' => 'required|string',
+            'address' => 'required|string',
+            'image' =>'max:2000'
         ]);
     }
 
@@ -61,12 +65,33 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create( $data)
     {
-        return User::create([
+
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone_no' => $data['phone_no'],
+            'address' => $data['address'],
+            'dob' => $data['dob'],
+            'user_type' => $data['user_type'],
+            'image' => null,
+            'gender' => $data['gender'],
         ]);
+
+        if ($data->hasFile('image')) 
+        {
+            $destination = 'uploads'.DIRECTORY_SEPARATOR.'Users';
+            $image=$data->file('image');
+            $imageName = time().$image->getClientOriginalName();
+            $image->move($destination,$imageName);
+
+            $user->image = $destination.DIRECTORY_SEPARATOR.$imageName;
+            $user->update();
+        }
+        return $user;
     }
 }
+

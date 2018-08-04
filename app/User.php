@@ -1,29 +1,41 @@
 <?php
-
 namespace App;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 class User extends Authenticatable
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+use Notifiable;
+/**
+* The attributes that are mass assignable.
+*
+* @var array
+*/
+protected $fillable = [
+'name',
+'email',
+'password',
+'phone_no',
+'address',
+'gender',
+'dob',
+'user_type',
+'image'
+];
+/**
+* The attributes that should be hidden for arrays.
+*
+* @var array
+*/
+protected $hidden = [
+'password', 'remember_token',
+];
+public function crafts(){
+return $this->hasMany('\App\Models\Craft');
+}
+public function chats(){
+return $this->hasMany('\App\Models\Chat');
+}
+public function likes(){
+return \DB::table("ans_reviews")->where("user_id", $this->id)->get();
+}
 }

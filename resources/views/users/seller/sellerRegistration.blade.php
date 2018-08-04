@@ -1,4 +1,4 @@
-@extends('layouts.blueprint')
+
 
 @section('content')
 

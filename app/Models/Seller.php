@@ -28,4 +28,8 @@ class Seller extends Model
     public function crafts(){
         return $this->hasMany('\App\Models\Craft');
     }
+
+    public function chat(){
+        return $this->hasOne('\App\Models\Chat');
+    }
 }

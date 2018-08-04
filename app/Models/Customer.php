@@ -23,4 +23,8 @@ class Customer extends Model
     	$this->attributes['password'] = bcrypt($value);
 
     }
+
+    public function chat(){
+        return $this->hasOne('\App\Models\Chat');
+    }
 }

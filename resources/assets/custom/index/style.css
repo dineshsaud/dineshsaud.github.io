@@ -24,3 +24,222 @@
 {
 margin-bottom: 0px; 	
 }
+
+section#chat-box{
+	width: 400px;
+	background: #fff;
+	position: fixed;
+	bottom: 10px;
+	right: 20px;
+	border-top-left-radius: 5px;
+	border-top-r autoight-radius: 5px;
+	border: 2px solid #e2e2e2;
+	display: none;
+}
+
+textarea.msg{
+	font-size: 14px;
+}
+
+#seller- autochat-box{
+
+	border-top-l autoeft-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid #e2e2e2;
+}
+
+#all-messages li{
+	cursor: pointer;
+}
+
+.c-log{
+	width: 400px;
+	margin: 80px auto;
+	border:none;
+	/*box-shadow: 2px 2px 3px 2px white;*/
+	background-color: rgba(27, 79, 114,0.6);
+	color:white;
+}
+.c-log img {
+	margin-top: -150px;
+	margin-left: 100px;
+	height: 150px;
+}
+.c-log input 
+{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+.c-log button {
+	margin-left: 150px;
+}
+
+}
+
+.c-log{
+	width: 400px;
+	margin: 80px auto;
+	border:none;
+	/*box-shadow: 2px 2px 3px 2px white;*/
+	background-color: rgba(27, 79, 114,0.6);
+	color:white;
+}
+.c-log img {
+	margin-top: -150px;
+	margin-left: 100px;
+	height: 150px;
+}
+.c-log input 
+{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+.c-log button {
+	margin-left: 90px;
+}
+
+.c-log button:hover {
+	background: white;
+	color:black;
+	border-radius: 10px;
+}
+.l-back
+{
+
+	width: 100%;
+	margin: 50px;
+	background-size: cover;
+	background-clip: border-box;
+	background-image:url('/images/doko.jpeg');
+
+}
+
+
+
+.c-log{
+	width: 400px;
+	margin: 80px auto;
+	border:none;
+	/*box-shadow: 2px 2px 3px 2px white;*/
+	background-color: rgba(27, 79, 114,0.6);
+	color:white;
+}
+.c-log img {
+	margin-top: -150px;
+	margin-left: 100px;
+	height: 150px;
+}
+.c-log input 
+{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+.c-log button {
+	margin-left: 150px;
+}
+
+
+
+.c-reg{
+	width: 600px;
+	margin: 80px auto;
+	border:none;
+	/*box-shadow: 2px 2px 3px 2px white;*/
+	background-color: rgba(27, 79, 114,0.6);
+	color:white;
+}
+.c-reg img {
+	margin-top: -150px;
+	margin-left: 100px;
+	height: 150px;
+}
+.c-reg input 
+{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+.c-reg 
+.c-reg button {
+	margin-left: 150px;
+}
+
+.c-reg select {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+
+
+.u-update{
+	width: 500px;
+	margin: 80px auto;
+	border:none;
+	padding: 6px;
+	padding-left: 50px;
+	align-content: center;
+	/*box-shadow: 2px 2px 3px 2px white;*/
+	background-color: rgba(27, 79, 114,0.6);
+	color:white;
+}
+.u-update img {
+	margin-top: -60px;
+	margin-left: 100px;
+	height: 200px;
+	width: 200px;
+	border-radius: 50px;
+	box-shadow: 2px 2px 2px gray;
+}
+.u-update input 
+{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}
+.u-update button {
+	margin-left: 150px;
+}
+
+.u-update select {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid black;
+	border-radius: none;
+	margin-left: 80px;
+	width: 200px;
+
+}

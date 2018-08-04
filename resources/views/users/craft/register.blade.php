@@ -1,14 +1,21 @@
 @extends('layouts.blueprint')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-muted">{{ __('Craft registration') }}</div>
+<style> 
+body{
+background: #EBF5FB  ;
+}</style>
+<div class="container ">
+    @if(session('status'))
+    <div class="alert alert-warning"> {{session('status')}}</div>
+    @endif
+    <div class="row justify-content-center l-back">
+        <div class="col-md-8 p-3">
+            <div class="card craft-reg">
+                <div class="card-header text-center"> <h3> <i class="fa fa-book">   </i>   {{ __('Craft Registration') }} </h3></div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('craftregister') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" value="{{ session('auth')['id'] }}" hidden="" name="seller_id"> {{-- seller id --}}
+                        <input type="text" value="{{ auth()->id() }}" hidden="" name="user_id"> {{-- seller id --}}
                         
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

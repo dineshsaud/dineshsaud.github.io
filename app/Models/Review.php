@@ -5,14 +5,14 @@ class Review extends Model
 {
 	protected $table="reviews";
 	protected $fillable=[
-		'customer_id',
+		'user_id',
 		'craft_id',
 		'comment',
 		'tittle',
 		'rating'
 	];
 
-	public function customer(){
-		return	$this->belongsTo('\App\Models\Customer');
+	public function user(){
+		return	$this->belongsTo('\App\User');
 	}
 }

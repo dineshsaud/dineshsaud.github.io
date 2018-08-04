@@ -25,7 +25,7 @@ class CreateCraftTable extends Migration
             $table->integer('quntity');
             $table->string('handicrafttype');
 
-            $table->foreign('seller_id')->references('id')->on('sellers');
+            $table->foreign('seller_id')->references('id')->on('users');
            
 
         });

@@ -1,5 +1,4 @@
 <?php
-
 function craft_categories()
 {
 	return [
@@ -15,7 +14,20 @@ function craft_categories()
 		'10' => 'Metal Craft'
 	];
 }
-
+function price()
+{
+	return [
+		500,
+		1000,
+		1500,
+		2000,
+		2500,
+		3000,
+		5000,
+		10000,
+		20000
+	];
+}
 function rating_text($value)
 {
 	if($value>4)
